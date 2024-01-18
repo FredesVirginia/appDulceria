@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\ComprarController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductosController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,11 +18,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
+
+Route::get('/',[LoginController::class,'create'])->name('welcome');
+Route::post('/',[LoginController::class,'store'])->name('login');
 
 
+Route::get('/register',[RegisterController::class,'create'])->name('register');
+Route::post('/register',[RegisterController::class,'store'])->name('registerUser');
 
 
 Route::get('/menu', function () {
@@ -31,10 +41,10 @@ Route::get('/puntoDeVista', function () {
 })->name('puntoDeVista');
 
 
-Route::get('/home', function () {
-    return view('home');
-})->name('home');
 
+
+Route::get('/home/',[ProductosController::class , 'index2'])->name('home');
+Route::post('/home',[ComprarController::class,'store'])->name('compra');
 Route::get('/altaDeProductos',[ProductosController::class,'create'])->name('altaDeProductos');
 Route::post('/altaDeProductos',[ProductosController::class,'store'])->name('productoCrear');
 Route::get('/productos',[ProductosController::class , 'index'])->name('productos');

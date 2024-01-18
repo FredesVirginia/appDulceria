@@ -18,6 +18,18 @@ class ProductosController extends Controller
         return view ('productos' , ['productos' => $productos]) ;
     }
 
+
+    public function index2()
+    {
+        //
+        $productos = Producto::get();
+       
+        return view ('home' , ['productos' => $productos]) ;
+    }
+
+
+
+
     /**
      * Show the form for creating a new resource.
      */
