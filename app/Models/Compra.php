@@ -8,5 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Compra extends Model
 {
     use HasFactory;
-    protected $fillable = [ 'productos', 'precio_total']; // Ajusta según tus necesidades
+    protected $fillable = ['precio_total' , 'user']; // Ajusta según tus necesidades
+
+    public function productos()
+{
+    return $this->belongsToMany(Producto::class, 'compra_producto', 'compra_id', 'producto_id')->withPivot('cantidad');
+}
 }

@@ -5,6 +5,9 @@ use App\Models\UserAdministrativo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Compra;
+use App\Models\Comprai;
+use App\Models\Producto;
+use App\Http\Livewire\VentaCreada;
 use Illuminate\Validation\ValidationException;
 class ComprarController extends Controller
 {
@@ -29,25 +32,37 @@ class ComprarController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-{
-  // Obtener datos del formulario
-  $productos = $request->input('productos');
-    $productosString = json_encode($productos);
+    {
 
-    // Obtener el precio total del formulario
-  
-    $precioTotal = $request->input('total'); // Asegúrate de tener un campo total en tu formulario
-    // Crear la compra
-    $compra = Compra::create([
-       
-        'productos' => $productosString,
-        'precio_total' => $precioTotal,
-    ]);
+        
+        // Crear la compra con el precio total
+        $compra = Compra::create([
+            'precio_total' => $request->input('total'),
+            'user' => $request->input('usuario'),
+        ]);
+    
+        // Obtener el array de productos y cantidades
+        $productosCantidades = json_decode($request->input('productos_seleccionados'), true);
+    
+        // Adjuntar productos a la compra
+        foreach ($productosCantidades as $productoCantidad) {
+            // Verifica si la clave 'id' y 'cantidad' están presentes en el array antes de intentar acceder
+            if (array_key_exists('id', $productoCantidad) && array_key_exists('cantidad', $productoCantidad)) {
+                // Verifica si el producto con ese ID existe en la base de datos
+                $producto = Producto::find($productoCantidad['id']);
+    
+                if ($producto) {
+                    // Adjuntar el producto a la compra con la cantidad
+                    $compra->productos()->attach($producto->id, ['cantidad' => $productoCantidad['cantidad']]);
+                }
+            }
+        }
+    
+        session()->flash('venta-creada', 'Venta creada correctamente');
+        // Redireccionar
+        return redirect()->route('home');
+    }
+}
 
-    $compra->save();
-    //redirecionando 
-    return redirect()->route('home');
-}
-}
 
 ?>

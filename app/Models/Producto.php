@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Producto extends Model
 {
     use HasFactory;
+    public function compras()
+    {
+        return $this->belongsToMany(Compra::class, 'compra_producto', 'producto_id', 'compra_id')->withPivot('cantidad');
+    }
 }
