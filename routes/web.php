@@ -3,6 +3,7 @@
 use App\Http\Controllers\ComprarController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductosController;
+use App\Http\Controllers\ProveedoresController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
@@ -52,13 +53,15 @@ Route::get('/producto/{id}',[ProductosController::class , 'show'])->name('produc
 Route::get('/productoEditar/{producto}',[ProductosController::class , 'edit'])->name('productoEditar');
 Route::patch('/productoActualizar/{producto}',[ProductosController::class , 'update'])->name('productoActualizar');
 Route::delete('/productoEliminar/{producto}',[ProductosController::class , 'destroy'])->name('productoEliminar');
-Route::get('/pro', function () {
-    return view('pro');
-})->name('pro');
 
-Route::get('/capturasDeProveedores', function () {
-    return view('capturasDeProveedores');
-})->name('capturasDeProveedores');
+
+Route::get('/proveedores',[ProveedoresController::class , 'index'])->name('proveedores');
+Route::get('/proveedores/crear', [ProveedoresController::class,'create'])->name('crearProveedores');
+Route::post('/proveedores/crear', [ProveedoresController::class,'store'])->name('proveedoresCrear');
+
+
+
+
 
 Route::get('/usuarios', [UserController::class , 'index'])->name('usuarios');
 
