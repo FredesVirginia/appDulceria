@@ -56,6 +56,7 @@ Route::delete('/productoEliminar/{producto}',[ProductosController::class , 'dest
 
 
 Route::get('/proveedores',[ProveedoresController::class , 'index'])->name('proveedores');
+Route::get('/proveedor/{id}',[ProveedoresController::class , 'show'])->name('proveedor');
 Route::get('/proveedores/crear', [ProveedoresController::class,'create'])->name('crearProveedores');
 Route::post('/proveedores/crear', [ProveedoresController::class,'store'])->name('proveedoresCrear');
 

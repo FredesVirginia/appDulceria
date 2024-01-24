@@ -57,6 +57,11 @@ class ProveedoresController extends Controller
 
     }
 
+
+    public function show( Proveedor $id)
+    {
+        return view('proveedores.proveedor' , ['proveedor' => $id]);
+    }
     /**
      * Display the specified resource.
      */

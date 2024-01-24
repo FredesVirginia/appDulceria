@@ -22,21 +22,36 @@
     </section>
 
     
-    <h1> Proveedores</h1>
-    <section class="text-white text-3xl">
-        <h1>Datos de la Base de Datos</h1>
-         <section class="flex justify-center"> 
-           <section  class="grid grid-cols-2  gap-4 p-4">
-            @foreach ($proveedores as $proveedor)
-            <div class="bg-red-400">
-             <h1> {{$proveedor->nombre}}</h1>
-             <h2> {{$proveedor->telefono}}</h2>
-             <h3> {{$proveedor->dirreccion}}</h3>
-             <h4> {{$proveedor->empresa}}</h4>
-            </div>
-         @endforeach
-           </section>
-         </section>
-    </section>
-</body>
+    <h1 class="text-center text-3xl text-white  m-10"> Proveedores Captados</h1>
+   <div class="flex justify-center">
+   <div class=" grid grid-cols-3  gap-4 p-4">
+    @foreach ($proveedores as $proveedor)
+    <label id="sumary class="bg-gradient-to-b from-color1 to-color2 ">
+        <input  type="checkbox" class=" input bg-gradient-to-b from-color1 to-color2"/>
+      
+           <article class="bg-gradient-to-b from-color1 to-color2">
+            <div class=" bg-gradient-to-b from-color9 to-color6 front">
+                <header class=" flex flex-col">
+                    <h2 class="font-bold text-2xl">{{$proveedor->nombre}}</h2>
+                    <h2>
+                        <a href= "/proveedor/{{$proveedor->id}}"
+                        > {{$proveedor ->nombre}}</a>
+                    </h2>
+                    <p class="mt-20">Mostrar mas </p>
+                </header>
+             </div>
+             <div class="back">
+                <header class="flex flex-col space-y-6">
+                    <h2 class="font-bold">{{$proveedor->empresa}} </h2>
+                    <p> {{$proveedor->telefono}}</p>
+                    <h3 class="text-pretty"> {{$proveedor->dirreccion}}</h3>
+                </header>
+
+             </div>
+           </article>
+    </label>
+        @endforeach
+   </div>
+   </div>
+    </body>
 </html>
