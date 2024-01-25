@@ -8,6 +8,9 @@
     @vite("resources/css/app.css")
 </head>
 <body class= " bg-color8">
+
+   
+
     <section >
         <h1 class="text-white text-center font-bold text-4xl bg-color1 p-4"> Dulceria - Los Golosos  </h1>
         <nav class="bg-color6 flex justify-evenly p-2">
@@ -121,6 +124,9 @@ if (productoSeleccionado === "") {
                             // Calcular el total inicial al agregar un nuevo producto
                             calcularTotal();
                         });
+
+
+                        
                 
                         function calcularTotal() {
                             var subtotal = 0;
@@ -165,5 +171,7 @@ botonEnviar.addEventListener('click', function() {
                 </script>
 
     </section>
+
+   
 </body>
 </html>
