@@ -107,3 +107,40 @@ article .back {
   @keyframes l27 {
     100% {transform: rotate(1turn)}
   }
+
+
+  .textbox {
+    position: relative;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: center;
+   
+  }
+  
+  
+  
+  .textbox input {
+   
+    border-bottom: 2px solid #dadfe7;
+  text-align: left;
+    height: 30px;
+    padding-left: 20px ;
+  }
+  
+  :is(input:focus, input:valid) ~ label {
+    translate: -40px -40px;
+    scale: 0.875;
+  }
+  
+
+  
+  .textbox label {
+    position: absolute;
+    top: 50%;
+    left: 36px;
+    translate: 0 -50%;
+   
+    pointer-events: none;
+    transition: 0.4s;
+  }
+  

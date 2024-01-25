@@ -115,11 +115,11 @@
     </form>
 
     @error('email')
-        <p class="text-red-400 font bold">{{ $message }}</p>
+        <p class="text-red-800 font-bold">{{ $message }}</p>
     @enderror
 
     @error('password')
-        <p class="text-red-400 font-bold">{{ $message }}</p>
+        <p class="text-red-800 font-bold">{{ $message }}</p>
     @enderror
     <div class="flex justify-center items-center mt-6">
         <p class=" text-gray-800 mr-6">Nuevo por Aqui? <a class="underline text-sky-600"
