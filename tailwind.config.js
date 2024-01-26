@@ -18,6 +18,7 @@ export default {
         color8: "#F1C601",
         color9:"#F5E20F",
         color10:"#F5C60F",
+        color11: "#12EBB6",
       },
     },
   },

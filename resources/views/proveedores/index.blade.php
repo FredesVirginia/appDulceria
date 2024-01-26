@@ -9,7 +9,7 @@
 </head>
 <body class= " bg-color7">
     <section >
-        <h1 class="text-white text-center font-bold text-4xl bg-color1 p-4"> Dulceria - Los Golosos  </h1>
+        <h1 class="text-white text-center font-bold text-4xl bg-color1 p-4"> <a href="{{ route('home') }}" class="no-underline text-white text-3xl font-bold"> Dulceria - Los Golosos</a> </h1>
         <nav class="bg-color6 flex justify-evenly p-2">
             <a href="{{ route('proveedores') }}" class="no-underline text-white text-xl"> Proveedores</a>
             <a href="{{ route('crearProveedores') }}" class="no-underline text-white text-xl ">Captura de Proveedores</a>
@@ -34,20 +34,29 @@
                 <header class=" flex flex-col">
                     <h2 class="font-bold text-2xl">{{$proveedor->nombre}}</h2>
                     <h2>
-                        <a href= "/proveedor/{{$proveedor->id}}"
-                        > {{$proveedor ->nombre}}</a>
+                         {{$proveedor ->nombre}}
                     </h2>
-                    <p class="mt-20">Mostrar mas </p>
+                    <p class="mt-20"> Mostrar mas </p>
                 </header>
              </div>
              <div class="back">
                 <header class="flex flex-col space-y-6">
                     <h2 class="font-bold">{{$proveedor->empresa}} </h2>
-                    <p> {{$proveedor->telefono}}</p>
                     <h3 class="text-pretty"> {{$proveedor->dirreccion}}</h3>
+                    <p> {{$proveedor->telefono}}</p>
+                   <div class="flex space-x-10">
+                    <a href= "/proveedor/{{$proveedor->id}}"> Editar</a>
+                    <form action="{{route('proveedorEliminar' , $proveedor)}}" method="POST">
+                        @csrf
+                        @method('DELETE')  
+                        <button type="submit">Borrar</button>  
+                </form>
+                   </div>
+                   
                 </header>
-
+               
              </div>
+
            </article>
     </label>
         @endforeach

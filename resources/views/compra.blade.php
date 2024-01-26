@@ -9,7 +9,7 @@
 </head>
 <body class= " bg-color7">
     <section >
-        <h1 class="text-white text-center font-bold text-4xl bg-color1 p-4"> Dulceria - Los Golosos  </h1>
+        <h1 class="text-white text-center font-bold text-4xl bg-color1 p-4"> <a href="{{ route('home') }}" class="no-underline text-white text-3xl font-bold"> Dulceria - Los Golosos</a> </h1>
         <nav class="bg-color6 flex justify-evenly p-2">
         <a href="{{ route('altaDeProductos') }}" class="no-underline text-white text-xl"> Alta de Productos</a>
 <a href="{{ route('productos') }}" class="no-underline text-white text-xl ">Ver Productos</a>

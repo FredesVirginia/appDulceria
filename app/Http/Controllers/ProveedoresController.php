@@ -60,10 +60,27 @@ class ProveedoresController extends Controller
 
     public function show( Proveedor $id)
     {
-        return view('proveedores.proveedor' , ['proveedor' => $id]);
+        return view('proveedores.actualizar' , ['proveedor' => $id]);
     }
-    /**
-     * Display the specified resource.
-     */
+
+
+    public function update(Request $request, Proveedor $proveedor)
+    {
+        $proveedor->nombre = $request->input('nombre');
+        $proveedor->empresa = $request->input('empresa');
+        $proveedor->telefono = $request->input('telefono');
+        $proveedor->dirreccion = $request->input('dirreccion');
+ 
+        $proveedor->save();
+        //redirecionando 
+        return redirect()->route('proveedores' );
+    }
+    
+
+    public function destroy(Proveedor $proveedor)
+    {
+        $proveedor->delete();
+        return to_route('proveedores');
+    }
   
 }

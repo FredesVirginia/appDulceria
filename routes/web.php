@@ -59,8 +59,8 @@ Route::get('/proveedores',[ProveedoresController::class , 'index'])->name('prove
 Route::get('/proveedor/{id}',[ProveedoresController::class , 'show'])->name('proveedor');
 Route::get('/proveedores/crear', [ProveedoresController::class,'create'])->name('crearProveedores');
 Route::post('/proveedores/crear', [ProveedoresController::class,'store'])->name('proveedoresCrear');
-
-
+Route::patch('/proveedorActualizar/{proveedor}',[ProveedoresController::class , 'update'])->name('proveedorActualizar');
+Route::delete('/proveedorEliminar/{proveedor}',[ProveedoresController::class , 'destroy'])->name('proveedorEliminar');
 
 
 

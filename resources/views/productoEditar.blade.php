@@ -9,7 +9,7 @@
 </head>
 <body class= " bg-color7">
     <section >
-        <h1 class="text-white text-center font-bold text-4xl bg-color1 p-4"> Dulceria - Los Golosos  </h1>
+        <h1 class="text-white text-center font-bold text-4xl bg-color1 p-4"> <a href="{{ route('home') }}" class="no-underline text-white text-3xl font-bold"> Dulceria - Los Golosos</a> </h1>
         <nav class="bg-color6 flex justify-evenly p-2">
         <a href="{{ route('altaDeProductos') }}" class="no-underline text-white text-xl"> Alta de Productos</a>
 <a href="{{ route('productos') }}" class="no-underline text-white text-xl ">Ver Productos</a>
@@ -17,7 +17,7 @@
         </section>
 
     <section class=" flex flex-col justify-center items-center">
-        <h1> Editar Producto</h1>
+        <h1 class="text-center p-4 mt-4 text-3xl text-white"> Editar Producto</h1>
         <form action="{{route('productoActualizar' , $producto)}}" method="POST"  class="w-80  mt-9 flex flex-col gap-4 max-w-sm py-8 px-3 bg-white ">
             @csrf @method('PATCH')
             
@@ -53,7 +53,7 @@
            
             <button class="bg-color2 py-1  rounded shadow">Guardar Cambios</button>
           </form>        
-          <button class="bg-color1 py-1 px-3 mt-4  rounded shadow">Canselar</button>
+          <button class="bg-color1 py-1 px-32 mt-4  rounded shadow"><a href="{{ route('productos') }}" class="no-underline text-xl ">Canselar</a></button>
     </section>
 </body>
 </html>
