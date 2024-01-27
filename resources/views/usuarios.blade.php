@@ -16,23 +16,31 @@
 
     </nav>
     <div class= "bg-color3">
-        <a href="{{ route('usuarios') }}" class="no-underline  text-gray-400 font-bold text-xl">Usuarios Registrados </a>
+        <h1 class="no-underline p-2 text-center text-gray-400 font-bold text-3xl">Todas las Ventas </h1>
     </div>
 
     <section class="text-white text-3xl">
-        <h1>Datos de la Base de Datos</h1>
-        @foreach ($compras as $compra)
-        <h2>ID Compra: {{ $compra->id }}</h2>
-        <h2>Precio Total: {{ $compra->precio_total }}</h2>
-        <h2>Usuario: {{ $compra->user }}</h2>
-    
-        <h3>Productos en la compra:</h3>
-        <ul>
-            @foreach ($compra->productos as $producto)
-                <li>ID Producto: {{ $producto->id }}, Cantidad: {{ $producto->pivot->cantidad }}</li>
+        
+        <div class="flex justify-center">
+            <div class=" grid grid-cols-3  gap-4 p-4 " >
+                @foreach ($compras as $compra)
+                <div class=" m-6 divs p-3 px-8 bg-gradient-to-b from-color3 to-green-600 ">
+                    <p style="font-size : 20px"> Compra Nro : {{ $compra->id }}</p>
+                    <p style="font-size : 20px">Usuario: {{ $compra->user }}</p>
+                   
+                  
+                
+                    <h3 style="font-size : 22px" class="text-black">Productos</h3>
+                    <ul>
+                        @foreach ($compra->productos as $producto)
+                            <li style="font-size : 20px"> {{ $producto->nombre }}, Cantidad: {{ $producto->pivot->cantidad }}</li>
+                        @endforeach
+                    </ul>
+                    <p style="font-size : 20px" class="text-black">Precio Total: {{ $compra->precio_total }}</p>
+                </div>
             @endforeach
-        </ul>
-    @endforeach
+            </div>
+        </div>
     </section>
 
    
