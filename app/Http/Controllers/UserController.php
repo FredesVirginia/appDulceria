@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Compra;
+use App\Models\Comprai;
+use App\Models\Producto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,8 +16,13 @@ class UserController extends Controller
     {
         //
 
-        $users = DB::table('users')->get();
-        return view ('usuarios' , ['usuarios' => $users]) ;
+        
+
+        $compras = Compra::with('productos')->get();
+
+        // Puedes realizar cualquier otra lógica que necesites aquí
+
+        return view('usuarios', ['compras' => $compras]);
     }
 
     /**

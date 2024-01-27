@@ -21,25 +21,20 @@
 
     <section class="text-white text-3xl">
         <h1>Datos de la Base de Datos</h1>
-        @foreach ($usuarios as $user)
-            <h2>{{ $user->nombre }}</h2>
-        @endforeach
+        @foreach ($compras as $compra)
+        <h2>ID Compra: {{ $compra->id }}</h2>
+        <h2>Precio Total: {{ $compra->precio_total }}</h2>
+        <h2>Usuario: {{ $compra->user }}</h2>
+    
+        <h3>Productos en la compra:</h3>
+        <ul>
+            @foreach ($compra->productos as $producto)
+                <li>ID Producto: {{ $producto->id }}, Cantidad: {{ $producto->pivot->cantidad }}</li>
+            @endforeach
+        </ul>
+    @endforeach
     </section>
 
-    <section class=" flex flex-col justify-center items-center">
-        <form   class="w-80  mt-9 flex flex-col gap-4 max-w-sm py-8 px-3 bg-white ">
-        
-            <input
-              class="border border-gray-200 rounded py-1 px-2 outline-none"
-              type="text"
-              name="name"
-              placeholder="👤 Nombre"/>
-
-             
-
-           
-            <button class="bg-color2 py-1  rounded shadow">Registrar</button>
-          </form>        
-    </section>>
+   
 </body>
 </html>
